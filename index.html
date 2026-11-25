@@ -1,78 +1,389 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Malathi S., Computer Science and Engineering student at KIT, Coimbatore.">
-    <title>Malathi S. | Portfolio</title>
+
+    <meta name="description"
+          content="Official portfolio of S. Malathi, a Computer Science and Engineering student at KIT, Coimbatore.">
+
+    <meta name="author" content="S. Malathi">
+
+    <title>S. Malathi | Computer Science & Engineering Portfolio</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Navigation layout correction -->
+    <style>
+        header.navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            padding: 14px 5%;
+            background: rgba(11, 11, 11, 0.97);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+            backdrop-filter: blur(14px);
+        }
+
+        header.navbar .logo {
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        header.navbar .logo span {
+            color: #f2d77c;
+        }
+
+        header.navbar nav {
+            width: auto;
+            min-height: 0;
+            display: block;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+        }
+
+        header.navbar nav ul {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 7px 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header.navbar nav ul li a {
+            display: inline-block;
+            color: #d5d1c7;
+            font-size: 0.84rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 5px 0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header.navbar nav ul li a:hover {
+            color: #f2d77c;
+        }
+
+        .profile-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .profile-links a {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 7px;
+            color: #d4af37;
+            background: #151515;
+            transition: all 0.3s ease;
+        }
+
+        .profile-links a:hover {
+            background: #d4af37;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 55px;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero-image {
+            flex-shrink: 0;
+        }
+
+        .hero-image img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            padding: 5px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading .eyebrow {
+            color: #d4af37;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 span {
+            color: #d4af37;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .education-card,
+        .research-card {
+            max-width: 850px;
+            margin: 30px auto 0;
+            padding: 28px;
+            background: #151515;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .education-card h3,
+        .research-card h3 {
+            color: #f2d77c;
+            margin: 12px 0;
+        }
+
+        .achievement-grid,
+        .experience-grid,
+        .certification-grid,
+        .learning-grid,
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .achievement-card,
+        .experience-card,
+        .certification-card,
+        .learning-card,
+        .activity-card {
+            padding: 24px;
+            background: #151515;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover,
+        .experience-card:hover,
+        .certification-card:hover,
+        .learning-card:hover,
+        .activity-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+        }
+
+        .achievement-card h3,
+        .experience-card h3,
+        .certification-card h3,
+        .learning-card h3,
+        .activity-card h3 {
+            color: #f2d77c;
+            margin-bottom: 10px;
+        }
+
+        .project-type {
+            color: #d4af37;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contact-content {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-email {
+            margin-top: 15px;
+        }
+
+        @media (max-width: 950px) {
+            header.navbar {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            header.navbar nav {
+                width: 100%;
+            }
+
+            header.navbar nav ul {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header.navbar {
+                align-items: center;
+            }
+
+            header.navbar nav ul {
+                justify-content: center;
+                gap: 8px 14px;
+            }
+
+            header.navbar nav ul li a {
+                font-size: 0.78rem;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .hero-image img {
+                width: 155px;
+                height: 155px;
+            }
+
+            .profile-links {
+                gap: 10px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
 
     <!-- NAVIGATION -->
-    <header class="navbar">
-        <a href="#home" class="logo">Malathi<span>.</span></a>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#research">Research</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
+    <header class="navbar">
+
+        <a href="#home" class="logo">
+            S. Malathi<span>.</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#coding-profiles">Coding Profiles</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#learning">Learning</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
+
     </header>
 
+
     <!-- HOME -->
+
     <section class="hero" id="home">
 
         <div class="hero-content">
+
             <p class="eyebrow">HELLO, I'M</p>
 
-            <h1>Malathi <span>S.</span></h1>
+            <h1>S. Malathi</h1>
 
             <h2>Computer Science & Engineering Student</h2>
 
             <p>
-                A passionate CSE student interested in programming,
-                software development, emerging technologies and
-                continuous learning. Always eager to explore new
-                ideas and build practical solutions.
+                A Computer Science and Engineering student interested
+                in programming, software development, emerging
+                technologies and continuous learning. I enjoy
+                strengthening my technical skills through academic
+                projects and problem-solving.
             </p>
 
             <div class="hero-buttons">
-                <a href="#projects" class="btn">Explore My Work</a>
-                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+
+                <a href="#projects" class="btn">
+                    Explore My Work
+                </a>
+
+                <a href="resume.pdf"
+                   class="btn secondary-btn"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Download Resume
+                </a>
+
+                <a href="#contact" class="btn">
+                    Contact Me
+                </a>
+
             </div>
 
             <div class="social-links">
+
                 <a href="https://github.com/Malathi-code"
-                   target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub ↗
+                </a>
 
                 <a href="https://www.linkedin.com/in/malathi-s-31987937b/"
-                   target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    LinkedIn ↗
+                </a>
+
             </div>
+
         </div>
 
         <div class="hero-image">
+
             <img src="images/profile.jpeg"
-                 alt="Professional portrait of Malathi S.">
+                 alt="Portrait of S. Malathi">
+
         </div>
 
     </section>
 
+
     <!-- ABOUT -->
+
     <section class="section about" id="about">
 
         <div class="section-heading">
+
             <p class="eyebrow">GET TO KNOW ME</p>
+
             <h2>About <span>Me</span></h2>
+
         </div>
 
         <div class="about-content">
+
             <p>
                 I am a second-year Bachelor of Engineering student
                 pursuing Computer Science and Engineering at
@@ -84,126 +395,472 @@
                 I enjoy learning programming concepts, exploring
                 technology and developing projects that strengthen
                 my technical knowledge. I continuously work on
-                improving my problem-solving and development skills.
+                improving my problem-solving, collaboration and
+                development skills.
             </p>
 
             <div class="education-card">
+
                 <p class="project-type">EDUCATION</p>
+
                 <h3>B.E. Computer Science and Engineering</h3>
-                <p>KIT – Kalaignarkarunanidhi Institute of Technology</p>
+
+                <p>
+                    KIT – Kalaignarkarunanidhi Institute of Technology
+                </p>
+
                 <p>Coimbatore, Tamil Nadu</p>
+
                 <p>2025 – 2029</p>
+
             </div>
+
         </div>
 
     </section>
 
+
     <!-- SKILLS -->
+
     <section class="section skills" id="skills">
 
         <div class="section-heading">
+
             <p class="eyebrow">WHAT I WORK WITH</p>
+
             <h2>My <span>Skills</span></h2>
+
         </div>
 
         <div class="skills-grid">
 
             <div class="skill-card">
+
                 <h3>Programming Languages</h3>
+
                 <p>C</p>
                 <p>Python</p>
                 <p>Java</p>
+
             </div>
 
             <div class="skill-card">
+
                 <h3>Tools & Technologies</h3>
+
                 <p>Visual Studio Code</p>
                 <p>Git & GitHub</p>
                 <p>MongoDB</p>
+
             </div>
 
             <div class="skill-card">
+
                 <h3>Core Concepts</h3>
+
                 <p>Data Structures</p>
                 <p>Algorithms</p>
                 <p>Object-Oriented Programming</p>
                 <p>Problem Solving</p>
+
+            </div>
+
+            <div class="skill-card">
+
+                <h3>Professional Skills</h3>
+
+                <p>Team Collaboration</p>
+                <p>Adaptability</p>
+                <p>Communication</p>
+                <p>Leadership</p>
+
+            </div>
+
+            <div class="skill-card">
+
+                <h3>Languages</h3>
+
+                <p>Tamil</p>
+                <p>English</p>
+
             </div>
 
         </div>
 
     </section>
 
+
     <!-- PROJECTS -->
+
     <section class="section projects" id="projects">
 
         <div class="section-heading">
+
             <p class="eyebrow">MY WORK</p>
+
             <h2>Featured <span>Projects</span></h2>
+
         </div>
 
         <div class="projects-grid">
 
             <article class="project-card">
+
                 <p class="project-type">C PROGRAMMING</p>
+
                 <h3>Mini Calculator</h3>
 
                 <p>
-                    A C-based calculator project designed to perform
-                    mathematical operations with expression evaluation
-                    and operator precedence.
+                    A C-based mini project designed to perform
+                    arithmetic operations. This project strengthened
+                    my understanding of C programming fundamentals.
                 </p>
 
                 <a href="https://github.com/Malathi-code/Mini-Calculator"
-                   target="_blank" rel="noopener noreferrer"
-                   class="text-link">View on GitHub ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="text-link">
+                    View on GitHub ↗
+                </a>
+
             </article>
 
+
             <article class="project-card">
+
                 <p class="project-type">PYTHON</p>
+
                 <h3>Reminder App</h3>
 
                 <p>
-                    A Python reminder application built using Tkinter
-                    and JSON to manage reminders and provide
-                    notifications.
+                    A Python reminder application built using
+                    Tkinter and JSON to manage reminders and
+                    provide notification alerts.
                 </p>
 
                 <a href="https://github.com/Malathi-code"
-                   target="_blank" rel="noopener noreferrer"
-                   class="text-link">GitHub Profile ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="text-link">
+                    View GitHub Profile ↗
+                </a>
+
             </article>
 
+
             <article class="project-card">
-                <p class="project-type">JAVA | DESIGN AND ANALYSIS OF ALGORITHMS</p>
-                <h3>Taxi & Ride-Sharing Dispatch Optimization</h3>
+
+                <p class="project-type">
+                    JAVA | DESIGN AND ANALYSIS OF ALGORITHMS
+                </p>
+
+                <h3>
+                    Taxi & Ride-Sharing Dispatch Optimization
+                </h3>
 
                 <p>
-                    An academic project focused on the problem of
-                    optimizing taxi and ride-sharing dispatch
+                    An academic project focused on the problem
+                    of optimizing taxi and ride-sharing dispatch
                     operations using Java.
                 </p>
 
                 <a href="https://github.com/Malathi-code"
-                   target="_blank" rel="noopener noreferrer"
-                   class="text-link">GitHub Profile ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="text-link">
+                    View GitHub Profile ↗
+                </a>
+
             </article>
 
         </div>
 
     </section>
 
-    <!-- RESEARCH -->
+
+    <!-- ACHIEVEMENTS -->
+
+    <section class="section achievements" id="achievements">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">MILESTONES & RECOGNITION</p>
+
+            <h2>Achievements <span>& Highlights</span></h2>
+
+        </div>
+
+        <div class="achievement-grid">
+
+            <article class="achievement-card">
+
+                <h3>CodeChef Silver Badge</h3>
+
+                <p>250+ problems solved</p>
+
+                <p>Competitive programming practice</p>
+
+            </article>
+
+
+            <article class="achievement-card">
+
+                <h3>Mathematics Competition</h3>
+
+                <p>National Level Mathematics Competition</p>
+
+                <p>ISTE Tamil Nadu Section</p>
+
+            </article>
+
+
+            <article class="achievement-card">
+
+                <h3>Hackathon Participation</h3>
+
+                <p>Participated in multiple hackathons.</p>
+
+                <p>
+                    Areas: AI, Cybersecurity, Data Science
+                    and Blockchain.
+                </p>
+
+            </article>
+
+
+            <article class="achievement-card">
+
+                <h3>LeetCode</h3>
+
+                <p>Contest rating: 1340</p>
+
+                <p>Top 89.02% globally (as reported in my resume)</p>
+
+            </article>
+
+
+            <article class="achievement-card">
+
+                <h3>Codeforces</h3>
+
+                <p>Maximum rating: 902</p>
+
+                <p>Highest rank: 6865</p>
+
+            </article>
+
+
+            <article class="achievement-card">
+
+                <h3>CodeChef</h3>
+
+                <p>Rating: 812 | Highest: 996</p>
+
+                <p>Global rank: 19249</p>
+
+            </article>
+
+        </div>
+
+        <p style="text-align:center; margin-top:22px; color:#aaa69b;">
+            Competitive programming figures reflect the values
+            recorded in my resume and may change over time.
+        </p>
+
+    </section>
+
+
+    <!-- EXPERIENCE & VOLUNTEERING -->
+
+    <section class="section experience" id="experience">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">LEARNING & CONTRIBUTION</p>
+
+            <h2>Experience <span>& Volunteering</span></h2>
+
+        </div>
+
+        <div class="experience-grid">
+
+            <article class="experience-card">
+
+                <p class="project-type">VIRTUAL INTERNSHIP</p>
+
+                <h3>ServiceNow</h3>
+
+                <p>
+                    Completed a ServiceNow virtual internship
+                    described as AICTE-approved.
+                </p>
+
+            </article>
+
+
+            <article class="experience-card">
+
+                <p class="project-type">PEER SUPPORT</p>
+
+                <h3>Coding Platform Guidance</h3>
+
+                <p>
+                    Helped peers set up and get started with
+                    coding platforms such as Codeforces,
+                    CodeChef and LeetCode.
+                </p>
+
+            </article>
+
+
+            <article class="experience-card">
+
+                <p class="project-type">VOLUNTEERING</p>
+
+                <h3>Academic Peer Support</h3>
+
+                <p>
+                    Volunteered in maintaining class notes
+                    and sharing study materials with classmates.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATIONS -->
+
+    <section class="section certifications" id="certifications">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">CONTINUOUS LEARNING</p>
+
+            <h2>Certifications <span>& Internship</span></h2>
+
+        </div>
+
+        <div class="certification-grid">
+
+            <article class="certification-card">
+
+                <h3>Cisco</h3>
+
+                <p>7 course certificates</p>
+
+                <p>Technology and programming</p>
+
+            </article>
+
+
+            <article class="certification-card">
+
+                <h3>MongoDB</h3>
+
+                <p>9 certificates</p>
+
+                <p>Database-related learning</p>
+
+            </article>
+
+
+            <article class="certification-card">
+
+                <h3>Infosys Springboard</h3>
+
+                <p>Programming course certificates</p>
+
+                <p>C, Python and Java</p>
+
+            </article>
+
+
+            <article class="certification-card">
+
+                <h3>ServiceNow</h3>
+
+                <p>Virtual Internship</p>
+
+                <p>AICTE-approved</p>
+
+            </article>
+
+
+            <article class="certification-card">
+
+                <h3>Saylor Academy</h3>
+
+                <p>English and Communication</p>
+
+                <p>Course certificates</p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CODING PROFILES -->
+
+    <section class="section coding" id="coding-profiles">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">PRACTICE & PROGRESS</p>
+
+            <h2>Coding <span>Profiles</span></h2>
+
+        </div>
+
+        <div class="profile-links">
+
+            <a href="https://leetcode.com/u/S_Malathi_7/"
+               target="_blank"
+               rel="noopener noreferrer">
+                LeetCode ↗
+            </a>
+
+            <a href="https://codeforces.com/profile/Malathi_S"
+               target="_blank"
+               rel="noopener noreferrer">
+                Codeforces ↗
+            </a>
+
+            <a href="https://www.codechef.com/users/malathi_07"
+               target="_blank"
+               rel="noopener noreferrer">
+                CodeChef ↗
+            </a>
+
+        </div>
+
+        <p style="text-align:center; margin-top:22px;">
+            Visit my individual coding profiles to explore
+            my competitive programming activity.
+        </p>
+
+    </section>
+
+
+    <!-- RESEARCH INTEREST -->
+
     <section class="section research" id="research">
 
         <div class="section-heading">
+
             <p class="eyebrow">ACADEMIC INTEREST</p>
+
             <h2>Research <span>Interest</span></h2>
+
         </div>
 
         <article class="research-card">
 
-            <p class="project-type">RESEARCH TOPIC</p>
+            <p class="project-type">ACADEMIC RESEARCH TOPIC</p>
 
             <h3>
                 Privacy-Preserving Federated Forecasting for
@@ -212,9 +869,10 @@
             </h3>
 
             <p>
-                An academic research topic exploring privacy-preserving
-                federated learning approaches for disease surveillance
-                and early outbreak forecasting using multi-hospital data.
+                An academic research topic exploring
+                privacy-preserving federated learning approaches
+                for disease surveillance and early outbreak
+                forecasting using multi-hospital data.
             </p>
 
         </article>
@@ -222,71 +880,150 @@
     </section>
 
 
-<!-- CERTIFICATIONS AND INTERNSHIP -->
-<section class="section certifications" id="certifications">
+    <!-- CURRENT LEARNING -->
 
-    <div class="section-heading">
-        <p class="eyebrow">CONTINUOUS LEARNING</p>
-        <h2>Certifications & <span>Internship</span></h2>
-    </div>
-
-    <div class="skills-grid">
-
-        <div class="skill-card">
-            <h3>Cisco</h3>
-            <p>7 course certificates</p>
-            <p>Technology and programming</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>MongoDB</h3>
-            <p>9 certificates</p>
-            <p>Database-related learning</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Infosys Springboard</h3>
-            <p>Programming course certificates</p>
-            <p>C, Python and Java</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>ServiceNow</h3>
-            <p>Virtual Internship</p>
-            <p>AICTE Approved</p>
-        </div>
-
-    </div>
-
-</section>
-
-       <!-- CODING PROFILES -->
-    <section class="section coding" id="coding">
+    <section class="section learning" id="learning">
 
         <div class="section-heading">
-            <p class="eyebrow">PRACTICE & PROGRESS</p>
-            <h2>Coding <span>Profiles</span></h2>
+
+            <p class="eyebrow">GROWING MY KNOWLEDGE</p>
+
+            <h2>Current <span>Learning Focus</span></h2>
+
         </div>
 
-        <div class="social-links">
-            <a href="https://leetcode.com/"
-               target="_blank" rel="noopener noreferrer">LeetCode ↗</a>
+        <div class="learning-grid">
 
-            <a href="https://codeforces.com/"
-               target="_blank" rel="noopener noreferrer">Codeforces ↗</a>
+            <article class="learning-card">
 
-            <a href="https://www.codechef.com/"
-               target="_blank" rel="noopener noreferrer">CodeChef ↗</a>
+                <h3>Java & OOP</h3>
+
+                <p>
+                    Strengthening object-oriented programming
+                    concepts and Java fundamentals.
+                </p>
+
+            </article>
+
+
+            <article class="learning-card">
+
+                <h3>Data Structures & Algorithms</h3>
+
+                <p>
+                    Building problem-solving skills through
+                    algorithm study and practice.
+                </p>
+
+            </article>
+
+
+            <article class="learning-card">
+
+                <h3>Database Systems</h3>
+
+                <p>
+                    Developing understanding of DBMS concepts
+                    and database connectivity.
+                </p>
+
+            </article>
+
+
+            <article class="learning-card">
+
+                <h3>Competitive Programming</h3>
+
+                <p>
+                    Continuing coding practice and improving
+                    logical problem-solving.
+                </p>
+
+            </article>
+
         </div>
 
     </section>
 
+
+    <!-- TECHNICAL ACTIVITIES -->
+
+    <section class="section activities" id="activities">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">BEYOND THE CLASSROOM</p>
+
+            <h2>Technical <span>Activities & Projects</span></h2>
+
+        </div>
+
+        <div class="activity-grid">
+
+            <article class="activity-card">
+
+                <p class="project-type">GITHUB PROJECT</p>
+
+                <h3>Mini Calculator – C</h3>
+
+                <p>
+                    A programming mini project available
+                    through my GitHub repository.
+                </p>
+
+                <a href="https://github.com/Malathi-code/Mini-Calculator"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="text-link">
+                    View Repository ↗
+                </a>
+
+            </article>
+
+
+            <article class="activity-card">
+
+                <p class="project-type">TECHNICAL PARTICIPATION</p>
+
+                <h3>Hackathons</h3>
+
+                <p>
+                    Participated in multiple hackathons covering
+                    AI, Cybersecurity, Data Science and Blockchain.
+                </p>
+
+            </article>
+
+
+            <article class="activity-card">
+
+                <p class="project-type">COLLABORATION</p>
+
+                <h3>Peer Learning</h3>
+
+                <p>
+                    Supported classmates by sharing study
+                    materials and helping them get started
+                    with coding platforms.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
     <!-- CONTACT -->
+
     <section class="section contact" id="contact">
 
         <div class="section-heading">
+
             <p class="eyebrow">LET'S CONNECT</p>
+
             <h2>Contact <span>Me</span></h2>
+
         </div>
 
         <div class="contact-content">
@@ -307,21 +1044,34 @@
             </p>
 
             <div class="social-links">
+
                 <a href="https://github.com/Malathi-code"
-                   target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub ↗
+                </a>
 
                 <a href="https://www.linkedin.com/in/malathi-s-31987937b/"
-                   target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    LinkedIn ↗
+                </a>
+
             </div>
 
         </div>
 
     </section>
 
+
     <!-- FOOTER -->
+
     <footer>
-        <p>© 2026 Malathi S. | Personal Portfolio</p>
+
+        <p>© 2026 S. Malathi | Personal Portfolio</p>
+
         <p>Designed with passion and purpose.</p>
+
     </footer>
 
 </body>
